@@ -4,14 +4,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-/* 1. Define custom pointing speeds BEFORE the include files */
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/pointing.h>
 
 /* Layer Index Definitions */
 #define BASE 0
@@ -23,11 +18,6 @@
 
 &sensors {
     triggers-per-rotation = <20>; 
-};
-
-&mmv {
-    time-to-max-speed-ms = <150>;    
-    acceleration-exponent = <1>;     
 };
 
 / {
@@ -130,7 +120,7 @@
                    &kp LEFT_GUI  &kp LALT  &kp LCTRL &kp BSPC  &mo 4               &mo 3       &kp SPACE  &kp ENTER  &kp RALT   &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>, <&inc_dec_msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>, <&inc_dec_kp PG_DN PG_UP>;
         };
 
         Art {
@@ -142,7 +132,7 @@
                    &kp LEFT_GUI  &kp BSPC  &kp LALT  &kp SPACE &kp H               &mo 3       &kp SPACE  &kp ENTER  &kp RALT   &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp RIGHT_BRACKET LEFT_BRACKET>, <&inc_dec_msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp RIGHT_BRACKET LEFT_BRACKET>, <&inc_dec_kp PG_DN PG_UP>;
         };
 
         Game {
@@ -154,7 +144,7 @@
                       &kp LEFT_GUI  &kt LCTRL  &kt R   &kt SPACE &kt C               &mo 3       &kp SPACE  &kp ENTER  &kp RALT   &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_msc SCRL_UP SCRL_DOWN>, <&inc_dec_msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp PG_DN PG_UP>, <&inc_dec_kp PG_DN PG_UP>;
         };
 
         Low {
@@ -166,19 +156,19 @@
                           &trans       &trans    &trans      &trans      &trans              &trans    &trans     &trans         &trans        &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>, <&inc_dec_msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>, <&inc_dec_kp PG_DN PG_UP>;
         };
 
         High {
             bindings = <
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3     &bt BT_SEL 4                                  &trans          &trans    &trans          &trans     &trans   &trans
-&trans      &kp INS       &mkp RCLK       &mmv MOVE_UP    &mkp LCLK        &kp PRINTSCREEN                               &msc SCRL_UP    &trans    &kp UP_ARROW    &trans     &kp N0   &trans
-&trans      &kp LALT      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &kp CLCK                                      &msc SCRL_DOWN  &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &kp DEL  &kp BSPC
+&trans      &kp INS       &mkp RCLK       &mmv MOVE_UP    &mkp LCLK        &kp PRINTSCREEN                               &trans          &trans    &kp UP_ARROW    &trans     &kp N0   &trans
+&trans      &kp LALT      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &kp CLCK                                      &trans          &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &kp DEL  &kp BSPC
 &trans      &kp K_UNDO    &kp K_CUT       &kp K_COPY      &kp K_PASTE      &kp K_PASTE      &trans              &trans   &trans          &trans    &trans          &trans     &trans   &trans
                           &trans          &trans          &mkp MCLK        &mkp LCLK        &mkp RCLK           &trans   &trans          &trans    &trans          &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>, <&inc_dec_msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>, <&inc_dec_kp PG_DN PG_UP>;
         };
 
         Misc {
@@ -190,7 +180,7 @@
                 &trans  &trans  &trans  &trans  &trans              &trans    &trans  &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>, <&inc_dec_msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>, <&inc_dec_kp PG_DN PG_UP>;
         };
     };
 };
