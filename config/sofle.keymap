@@ -16,7 +16,7 @@
         L_Shift {
             bindings = <&kp LEFT_SHIFT>;
             key-positions = <28 27>;
-            layers = <0 1 3 4>;
+            layers = <0 2 3 4>;
         };
 
         R_Shift {
@@ -30,19 +30,19 @@
         };
 
         To_Art {
-            bindings = <&to 1>;
+            bindings = <&to 2>;
             key-positions = <2 3 4 1>;
         };
 
         To_Gaming {
-            bindings = <&to 2>;
+            bindings = <&to 1>;
             key-positions = <2 3 4 5>;
         };
 
         L_Alt {
             bindings = <&kp LEFT_ALT>;
             key-positions = <27 28 53>;
-            layers = <0 3 1 4>;
+            layers = <0 3 2 4>;
         };
 
         To_High {
@@ -53,25 +53,25 @@
         Undo {
             bindings = <&kp C_AC_UNDO>;
             key-positions = <27 53>;
-            layers = <0 1 3 4>;
+            layers = <0 2 3 4>;
         };
 
         Redo {
             bindings = <&kp C_AC_REDO>;
             key-positions = <27 53 26>;
-            layers = <0 3 1 4>;
+            layers = <0 3 2 4>;
         };
 
         L_Ctrl {
             bindings = <&kp LCTRL>;
             key-positions = <37 38>;
-            layers = <0 1 3 4>;
+            layers = <0 2 3 4>;
         };
 
         Escape {
             bindings = <&kp ESCAPE>;
             key-positions = <13 14>;
-            layers = <0 1 3 4>;
+            layers = <0 2 3 4>;
         };
 
         To_Low {
@@ -82,7 +82,7 @@
         L_Ctrl2 {
             bindings = <&kp LEFT_CONTROL>;
             key-positions = <27 26>;
-            layers = <0 1 3 4>;
+            layers = <0 2 3 4>;
         };
 
         To_Base {
@@ -93,7 +93,7 @@
         PausePlay {
             bindings = <&kp C_PLAY_PAUSE>;
             key-positions = <14 15>;
-            layers = <0 1 3 4>;
+            layers = <0 2 3 4>;
         };
     };
 
@@ -125,23 +125,6 @@
             label = "Base";
         };
 
-        Art {
-            display-name = "Art";
-            bindings = <
-&kp GRAVE  &kp N1  &kp N2        &kp N3    &kp N4    &kp N5                          &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp MINUS
-&kp TAB    &kp Q   &kp W         &kp E     &kp R     &kp T                           &kp Y      &kp U      &kp I      &kp O     &kp P     &kp BSPC
-&kp LCTRL  &kp A   &kp S         &kp D     &kp F     &kp G                           &kp H      &kp J      &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z   &kp X         &kp C     &kp V     &kp B      &mo 5    &kp C_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-                   &kp LEFT_GUI  &kp BSPC  &kp LALT  &kp SPACE  &kp H    &mo 3       &kp SPACE  &kp ENTER  &kp RALT   &kp RGUI
-            >;
-
-            sensor-bindings =
-                <&inc_dec_kp RIGHT_BRACKET LEFT_BRACKET>,
-                <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
-
-            label = "Art";
-        };
-
         Game {
             display-name = "Game";
             bindings = <
@@ -157,6 +140,23 @@
                 <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
 
             label = "Game";
+        };
+
+        Art {
+            display-name = "Art";
+            bindings = <
+&kp GRAVE  &kp N1  &kp N2        &kp N3    &kp N4    &kp N5                          &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp MINUS
+&kp TAB    &kp Q   &kp W         &kp E     &kp R     &kp T                           &kp Y      &kp U      &kp I      &kp O     &kp P     &kp BSPC
+&kp LCTRL  &kp A   &kp S         &kp D     &kp F     &kp G                           &kp H      &kp J      &kp K      &kp L     &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z   &kp X         &kp C     &kp V     &kp B      &mo 5    &kp C_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+                   &kp LEFT_GUI  &kp BSPC  &kp LALT  &kp SPACE  &kp H    &mo 3       &kp SPACE  &kp ENTER  &kp RALT   &kp RGUI
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp RIGHT_BRACKET LEFT_BRACKET>,
+                <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
+
+            label = "Art";
         };
 
         Low {
