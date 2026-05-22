@@ -10,21 +10,13 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    macros {
-        CtrlDelete: CtrlDelete {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_CONTROL &kp DEL>;
-            label = "CTRLDELETE";
-        };
-    };
-
     combos {
         compatible = "zmk,combos";
 
         L_Shift {
             bindings = <&kp LEFT_SHIFT>;
             key-positions = <28 27>;
+            layers = <0 1 3 4>;
         };
 
         R_Shift {
@@ -42,102 +34,71 @@
             key-positions = <2 3 4 1>;
         };
 
-        Toggle_Gaming {
-            bindings = <&to 0>;
+        To_Gaming {
+            bindings = <&to 2>;
             key-positions = <2 3 4 5>;
         };
 
         L_Alt {
             bindings = <&kp LEFT_ALT>;
             key-positions = <27 28 53>;
-            layers = <2 4 3 1>;
+            layers = <0 3 1 4>;
         };
 
-        To_Raise {
+        To_High {
             bindings = <&to 4>;
             key-positions = <13 14 15 16>;
-            layers = <2 4 3 1>;
         };
 
         Undo {
             bindings = <&kp C_AC_UNDO>;
             key-positions = <27 53>;
-            layers = <2 4 3 1>;
+            layers = <0 1 3 4>;
         };
 
         Redo {
             bindings = <&kp C_AC_REDO>;
             key-positions = <27 53 26>;
-            layers = <2 4 3 1>;
+            layers = <0 3 1 4>;
         };
 
         L_Ctrl {
             bindings = <&kp LCTRL>;
             key-positions = <37 38>;
-            layers = <2 4 3 1>;
+            layers = <0 1 3 4>;
         };
 
         Escape {
             bindings = <&kp ESCAPE>;
             key-positions = <13 14>;
-            layers = <2 4 3 1>;
+            layers = <0 1 3 4>;
         };
 
-        To_Lower {
+        To_Low {
             bindings = <&to 3>;
             key-positions = <31 33 32 34>;
-            layers = <2 4 3 1>;
         };
 
         L_Ctrl2 {
             bindings = <&kp LEFT_CONTROL>;
             key-positions = <27 26>;
-            layers = <2 4 3 1>;
+            layers = <0 1 3 4>;
         };
 
         To_Base {
-            bindings = <&to 2>;
+            bindings = <&to 0>;
             key-positions = <25 26 27 28>;
-            layers = <2 4 3 1>;
+        };
+
+        PausePlay {
+            bindings = <&kp C_PLAY_PAUSE>;
+            key-positions = <14 15>;
+            layers = <0 1 3 4>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
-
-        Game {
-            display-name = "Game";
-            bindings = <
-&kp GRAVE  &kp N1     &kp N2        &kp N3     &kp N4  &kp N5                          &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp MINUS
-&kp ESC    &kt TAB    &kp Q         &kp W      &kp E   &kp R                           &kp Y      &kp U      &kp I      &kp O     &kp P     &kp BSPC
-&kp TAB    &kt RET    &kp A         &kp S      &kp D   &kp F                           &kp H      &kp J      &kp K      &kp L     &kp SEMI  &kp SQT
-&kt LSHFT  &kp LSHFT  &kp X         &kp C      &kp V   &kp B      &mo 2    &kp C_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-                      &kp LEFT_GUI  &kt LCTRL  &kt R   &kt SPACE  &kt C    &mo 3       &kp SPACE  &kp ENTER  &kp RALT   &kp RGUI
-            >;
-
-            sensor-bindings =
-                <&inc_dec_kp C_AC_SCROLL_UP C_AC_SCROLL_DOWN>,
-                <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
-
-            label = "Game";
-        };
-
-        Art {
-            display-name = "Art";
-            bindings = <
-&kp GRAVE  &kp N1  &kp N2        &kp N3    &kp N4    &kp N5                                     &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp MINUS
-&kp TAB    &kp Q   &kp W         &kp E     &kp R     &kp T                                      &kp Y      &kp U      &kp I      &kp O     &kp P     &kp BSPC
-&kp LCTRL  &kp A   &kp S         &kp D     &kp F     &kp G                                      &kp H      &kp J      &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z   &kp X         &kp C     &kp V     &kp B      &kp K_PLAY_PAUSE    &kp C_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-                   &kp LEFT_GUI  &kp BSPC  &kp LALT  &kp SPACE  &kp H               &mo 3       &kp SPACE  &kp ENTER  &kp RALT   &kp RGUI
-            >;
-
-            sensor-bindings =
-                <&inc_dec_kp RIGHT_BRACKET LEFT_BRACKET>,
-                <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
-
-            label = "Art";
-        };
 
         Base {
             display-name = "Base";
@@ -159,9 +120,43 @@
 
             sensor-bindings =
                 <&inc_dec_kp C_VOL_UP C_VOL_DN>,
-                <&inc_dec_kp C_AC_SCROLL_DOWN C_AC_SCROLL_UP>;
+                <&inc_dec_kp PAGE_DOWN PAGE_UP>;
 
             label = "Base";
+        };
+
+        Art {
+            display-name = "Art";
+            bindings = <
+&kp GRAVE  &kp N1  &kp N2        &kp N3    &kp N4    &kp N5                          &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp MINUS
+&kp TAB    &kp Q   &kp W         &kp E     &kp R     &kp T                           &kp Y      &kp U      &kp I      &kp O     &kp P     &kp BSPC
+&kp LCTRL  &kp A   &kp S         &kp D     &kp F     &kp G                           &kp H      &kp J      &kp K      &kp L     &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z   &kp X         &kp C     &kp V     &kp B      &mo 5    &kp C_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+                   &kp LEFT_GUI  &kp BSPC  &kp LALT  &kp SPACE  &kp H    &mo 3       &kp SPACE  &kp ENTER  &kp RALT   &kp RGUI
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp RIGHT_BRACKET LEFT_BRACKET>,
+                <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
+
+            label = "Art";
+        };
+
+        Game {
+            display-name = "Game";
+            bindings = <
+&kp GRAVE  &kp N1     &kp N2        &kp N3     &kp N4  &kp N5                          &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp MINUS
+&kp ESC    &kt TAB    &kp Q         &kp W      &kp E   &kp R                           &kp Y      &kp U      &kp I      &kp O     &kp P     &kp BSPC
+&kp TAB    &kt RET    &kp A         &kp S      &kp D   &kp F                           &kp H      &kp J      &kp K      &kp L     &kp SEMI  &kp SQT
+&kt LSHFT  &kp LSHFT  &kp X         &kp C      &kp V   &kp B      &mo 5    &kp C_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+                      &kp LEFT_GUI  &kt LCTRL  &kt R   &kt SPACE  &kt C    &mo 3       &kp SPACE  &kp ENTER  &kp RALT   &kp RGUI
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp C_AC_SCROLL_UP C_AC_SCROLL_DOWN>,
+                <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
+
+            label = "Game";
         };
 
         Low {
@@ -176,7 +171,7 @@
 
             bindings = <
 &kp ESC  &kp F1           &kp F2       &kp F3    &kp F4      &kp F5                         &kp F6     &kp F7         &kp F8        &kp F9                &kp F10                &kp F11
-&mo 4    &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT                    &kp CARET  &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp F12
+&trans   &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT                    &kp CARET  &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp F12
 &trans   &kp N1           &kp N2       &kp N3    &kp N4      &kp N5                         &kp N6     &kp N7         &kp N8        &kp N9                &kp N0                 &kp PIPE
 &trans   &kp EQUAL        &kp MINUS    &kp PLUS  &kp MINUS   &kp RBRC     &trans    &trans  &kp LBKT   &kp RBKT       &kp SEMI      &kp COLON             &kp BSLH               &trans
                           &trans       &trans    &trans      &trans       &trans    &trans  &trans     &trans         &trans        &trans
@@ -209,6 +204,19 @@
                 <&inc_dec_kp PG_UP PG_DN>;
 
             label = "High";
+        };
+
+        Misc {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
+            label = "Misc";
         };
     };
 };
