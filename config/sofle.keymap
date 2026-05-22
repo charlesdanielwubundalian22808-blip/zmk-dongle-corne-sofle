@@ -18,11 +18,40 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        L_Shift {
+            bindings = <&kp LEFT_SHIFT>;
+            key-positions = <28 27>;
+        };
+
+        R_Shift {
+            bindings = <&kp LEFT_SHIFT>;
+            key-positions = <31 32>;
+        };
+
+        R_Enter {
+            bindings = <&kp ENTER>;
+            key-positions = <32 33>;
+        };
+
+        Toggle_Art {
+            bindings = <&tog 3>;
+            key-positions = <2 3 4 5>;
+        };
+
+        Toggle_Default {
+            bindings = <&tog 0>;
+            key-positions = <2 3 4 1>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "BAS";
+            display-name = "Base";
 
             // ------------------------------------------------------------------------------------------------------------
             // |  `    |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |       |
@@ -32,11 +61,11 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp GRAVE  &kp N1  &kp N2    &kp N3    &kp N4     &kp N5                                       &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp MINUS
-&kp ESC    &kp Q   &kp W     &kp E     &kp R      &kp T                                        &kp Y      &kp U      &kp I      &kp O     &kp P     &kp BSPC
-&kp TAB    &kp A   &kp S     &kp D     &kp F      &kp G                                        &kp H      &kp J      &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z   &kp X     &kp C     &kp V      &kp B        &kp K_PLAY_PAUSE    &kp C_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-                   &kp LGUI  &kp LALT  &kp LCTRL  &CtrlDelete  &mo 1               &mo 2       &kp SPACE  &kp RCTRL  &kp RALT   &kp RGUI
+&kp GRAVE  &kp N1  &kp N2        &kp N3    &kp N4     &kp N5                                         &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp MINUS
+&kp ESC    &kp Q   &kp W         &kp E     &kp R      &kp T                                          &kp Y      &kp U      &kp I      &kp O     &kp P     &kp BSPC
+&kp TAB    &kp A   &kp S         &kp D     &kp F      &kp G                                          &kp H      &kp J      &kp K      &kp L     &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z   &kp X         &kp C     &kp V      &kp B          &kp K_PLAY_PAUSE    &kp C_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+                   &kp LEFT_GUI  &kp LALT  &kp LCTRL  &kp BACKSPACE  &mo 1               &mo 2       &kp SPACE  &kp ENTER  &kp RALT   &kp RGUI
             >;
 
             sensor-bindings =
@@ -45,7 +74,7 @@
         };
 
         raise_layer {
-            display-name = "RAI";
+            display-name = "Raise";
 
             // ------------------------------------------------------------------------------------------------------------
             // |BTCLR| BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
@@ -68,7 +97,7 @@
         };
 
         lower_layer {
-            display-name = "LOW";
+            display-name = "Lower";
 
             // ------------------------------------------------------------------------------------------------------------
             // | `     |  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |  F7   |  F8   |  F9  |  F10  |  F11  |
@@ -89,23 +118,35 @@
         };
 
         Art {
+            display-name = "Art";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&kp GRAVE  &kp N1  &kp N2        &kp N3    &kp N4    &kp N5                                     &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp MINUS
+&kp TAB    &kp Q   &kp W         &kp E     &kp R     &kp T                                      &kp Y      &kp U      &kp I      &kp O     &kp P     &kp BSPC
+&kp LCTRL  &kp A   &kp S         &kp D     &kp F     &kp G                                      &kp H      &kp J      &kp K      &kp L     &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z   &kp X         &kp C     &kp V     &kp B      &kp K_PLAY_PAUSE    &kp C_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+                   &kp LEFT_GUI  &kp BSPC  &kp LALT  &kp SPACE  &kp SPACE           &mo 2       &kp SPACE  &kp ENTER  &kp RALT   &kp RGUI
             >;
+
+            sensor-bindings =
+                <&inc_dec_kp RIGHT_BRACKET LEFT_BRACKET>,
+                <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
+
+            label = "Art";
         };
 
         Gaming {
+            display-name = "Gaming";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&kp GRAVE  &kp N1  &kp N2        &kp N3    &kp N4     &kp N5                                         &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp MINUS
+&kp ESC    &kp Q   &kp W         &kp E     &kp R      &kp T                                          &kp Y      &kp U      &kp I      &kp O     &kp P     &kp BSPC
+&kp TAB    &kp A   &kp S         &kp D     &kp F      &kp G                                          &kp H      &kp J      &kp K      &kp L     &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z   &kp X         &kp C     &kp V      &kp B          &kp K_PLAY_PAUSE    &kp C_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+                   &kp LEFT_GUI  &kp LALT  &kp LCTRL  &kp BACKSPACE  &mo 1               &mo 2       &kp SPACE  &kp ENTER  &kp RALT   &kp RGUI
             >;
+
+            sensor-bindings =
+                <&inc_dec_kp C_VOL_UP C_VOL_DN>,
+                <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
         };
     };
 };
