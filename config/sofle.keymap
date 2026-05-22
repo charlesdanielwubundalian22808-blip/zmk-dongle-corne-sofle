@@ -107,6 +107,12 @@
             key-positions = <26 27 28 25 54>;
             layers = <0 1 2 3>;
         };
+
+        Toggle_Misc {
+            bindings = <&tog 5>;
+            key-positions = <26 27 28 54>;
+            layers = <0 1 2 3>;
+        };
     };
 
     keymap {
@@ -194,11 +200,11 @@
 
         Misc {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans     &trans    &trans    &trans     &trans     &trans                     &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &trans    &trans    &trans     &trans     &trans                     &trans  &trans  &trans  &trans  &trans  &trans
+&kp LCTRL  &kp LALT  &kp LEFT  &kp SPACE  &kp RIGHT  &kp F                      &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &trans    &kp J     &kp K      &kp L      &trans   &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                     &trans    &trans     &trans     &kp TAB  &trans    &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings =
